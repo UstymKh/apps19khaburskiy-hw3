@@ -31,6 +31,14 @@ class Student {
         return surname;
     }
 
+    public boolean equals(Student other) {
+        if (this.toString() == other.toString()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
