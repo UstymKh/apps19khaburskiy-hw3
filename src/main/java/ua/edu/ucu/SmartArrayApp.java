@@ -72,11 +72,11 @@ public class SmartArrayApp {
                 int lmin = Math.min(lA, lAA);
 
                 for (int i = 0; i < lmin; i += 1) {
-                    int strA_ch = surA.charAt(i);
-                    int strAA_ch = surAA.charAt(i);
+                    int strAch = surA.charAt(i);
+                    int strAAch = surAA.charAt(i);
 
-                    if (strA_ch != strAA_ch) {
-                        return strA_ch - strAA_ch;
+                    if (strAch != strAAch) {
+                        return strAch - strAAch;
                     }
                 }
                 if (lA != lAA) {
