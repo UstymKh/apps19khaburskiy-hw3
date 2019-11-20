@@ -57,32 +57,30 @@ public class SmartArrayApp {
         MyPredicate predicate = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                if (((Student) t).getYear() == 2 && ((Student) t).getGPA() >= 4) {
-                    return true;
-                }
-                return false;
+                int grade = 4;
+                return ((Student) t).getYear() == 2 && ((Student) t).getGPA() >= grade;
             }
         };
         studentSmartArray = new FilterDecorator(studentSmartArray, predicate);
         MyComparator compare = new MyComparator() {
             @Override
             public int compare(Object o1, Object o2) {
-                String sur1 = ((Student) o1).getSurname();
-                String sur2 = ((Student) o2).getSurname();
-                int l1 = sur1.length();
-                int l2 = sur2.length();
-                int lmin = Math.min(l1, l2);
+                String surA = ((Student) o1).getSurname();
+                String surAA = ((Student) o2).getSurname();
+                int lA = surA.length();
+                int lAA = surAA.length();
+                int lmin = Math.min(lA, lAA);
 
-                for (int i = 0; i < lmin; i++) {
-                    int str1_ch = sur1.charAt(i);
-                    int str2_ch = sur2.charAt(i);
+                for (int i = 0; i < lmin; i += 1) {
+                    int strA_ch = surA.charAt(i);
+                    int strAA_ch = surAA.charAt(i);
 
-                    if (str1_ch != str2_ch) {
-                        return str1_ch - str2_ch;
+                    if (strA_ch != strAA_ch) {
+                        return strA_ch - strAA_ch;
                     }
                 }
-                if (l1 != l2) {
-                    return l1 - l2;
+                if (lA != lAA) {
+                    return lA - lAA;
                 } else {
                     return 0;
                 }
@@ -92,13 +90,15 @@ public class SmartArrayApp {
         MyFunction function = new MyFunction() {
             @Override
             public Object apply(Object t) {
-                String result = ((Student) t).getSurname() + " " + ((Student) t).getName();
-                return result;
+                return ((Student) t).getSurname() + " " + ((Student) t).getName();
             }
         };
         studentSmartArray = new MapDecorator(studentSmartArray, function);
         // Hint: to convert Object[] to String[] - use the following code
         Object[] result = studentSmartArray.toArray();
+        for (Object st : result) {
+            System.out.println(st.toString());
+        }
         return Arrays.copyOf(result, result.length, String[].class);
     }
 }

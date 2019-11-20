@@ -31,12 +31,14 @@ class Student {
         return surname;
     }
 
-    public boolean equals(Student other) {
-        if (this.toString() == other.toString()) {
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public boolean equals(Object other) {
+        return this.toString().equals(other.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
     }
 
     @Override

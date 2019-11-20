@@ -10,7 +10,7 @@ public class MapDecorator extends SmartArrayDecorator {
     public MapDecorator(SmartArray smartArray, MyFunction myFunction) {
         super(smartArray);
         this.newArr = this.smartArray.toArray();
-        for (int i = 0; i < this.smartArray.size(); i++) {
+        for (int i = 0; i < this.smartArray.size(); i += 1) {
             newArr[i] = myFunction.apply(newArr[i]);
         }
 
